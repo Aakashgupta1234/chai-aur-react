@@ -17,7 +17,7 @@ function App() {
   //actual  change in theme
 
   useEffect(()=>{
-    document.querySelector('html').classList.remove("Light","dark")
+    document.querySelector('html').classList.remove("light","dark")
     document.querySelector('html').classList.add(ThemeMode)
   },[ThemeMode])
 
@@ -30,7 +30,7 @@ function App() {
                     </div>
 
                     <div className="w-full max-w-sm mx-auto">
-                       <card />
+                       <Card />
                     </div>
                 </div>
             </div>
