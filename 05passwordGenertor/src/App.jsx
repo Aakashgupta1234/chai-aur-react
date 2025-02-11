@@ -88,9 +88,7 @@ function App() {
            <lebel htmlFor="characterInput">characters</lebel>
          </div>
        </div>
-     </div>
-      
+     </div>  
   )
   }
-  
 export default App
