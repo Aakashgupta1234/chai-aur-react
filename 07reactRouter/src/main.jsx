@@ -1,41 +1,52 @@
 import React from 'react'
-import ReactDom from 'react-dom/client'
+import ReactDOM from 'react-dom/client'
 import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import About from './components/About/about.jsx'
-import Contract from './components/contract/contract.jsx'
-import Home from './components/Home/Home.jsx'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import Layout from './Layout.jsx'
-import Github from './components/Github/Github.jsx'
+import Home from './components/Home/Home.jsx'
+import About from './components/About/About.jsx'
+import Contact from './components/Contract/Contract.jsx'
+import Github, { githubInfoLoader } from './components/Github/Github.jsx'
 
-const router =  createBrowserRouter([
-{
-  path:'/',
-  element:<Layout />,
-  children :[
-    {
-      path:"",
-      element:<Home/>
-},
-{
-     path:"about",
-     element:<About/>
-},
-{
-  path:"contract",
-  element:<Contract/>
-},
-{
-  path:"github",
-  element:<Github/>
-},
-]
-}
-])
+// const router = createBrowserRouter([
+//   {
+//     path: '/',
+//     element: <Layout/>,
+//     children: [
+//       {
+//         path: "",
+//         element: <Home />
+//       },
+//       {
+//         path: "about",
+//         element: <About />
+//       },
+//       {
+//         path: "contact",
+//         element: <Contact />
+//       }
+//     ]
+//   }
+// ])
 
-ReactDom.createRoot(document.getElementById('root')).render(
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path='/' element={<Layout />}>
+      <Route path='' element={<Home />} />
+      <Route path='about' element={<About />} />
+      <Route path='contact' element={<Contact />} />
+      <Route path='user/:userid' element={<User />} />
+      <Route 
+      loader={githubInfoLoader}
+      path='github' 
+      element={<Github />}
+       />
+    </Route>
+  )
+)
+
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </React.StrictMode>,
-
 )

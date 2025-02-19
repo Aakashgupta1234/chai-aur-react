@@ -1,13 +1,10 @@
 import { useState } from 'react'
-
-import './App.css'
-
 function App() {
   
 
   return (
     <>
-     <h1 className='text-3xl bg-orange-500'>hello ji</h1>
+     <h1 className='text-3xl bg-orange-500'>currency App</h1>
     </>
   )
 }

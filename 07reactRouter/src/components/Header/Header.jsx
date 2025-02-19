@@ -88,8 +88,6 @@ export default function Header() {
                                 >
                                     Github
                                 </NavLink>
-                            
-                            
                         </ul>
                     </div>
                 </div>
