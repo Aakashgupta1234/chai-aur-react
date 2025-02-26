@@ -1,5 +1,5 @@
 import conf from '..conf.js';
-import{Client,Databases,ID,Storage,Query,}from "appwrite";
+import{Client,Databases,ID,Storage,Query}from "appwrite";
 
 export class Service{
     client = new Client();
@@ -57,7 +57,7 @@ export class Service{
                await this.databases.deleteDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug,
+                slug
                ) 
                 return true
         } catch (error) {
@@ -68,8 +68,8 @@ export class Service{
     async getPost(slug){
         try {
             return await this.databases.getDocument(
-                conf.appwriteCollectionId,
                 conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
                 slug
             )
         } catch (error) {
@@ -114,6 +114,7 @@ export class Service{
                 conf.appwriteBucketId,
                 fileId
             )
+            return true
         } catch (error) {
             console.log(error);
             return false

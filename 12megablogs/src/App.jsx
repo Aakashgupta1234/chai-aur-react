@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { useDispatch } from 'react-redux'
-import AuthService from './appwrite/auth'
+import authService from './appwrite/auth'
 import {login,logout}from "./store/authSlice"
+import {Header,Footer}from './components'
+
 
 function App() {
   const [loding,setLoading] = useState(true)
@@ -10,7 +12,7 @@ function App() {
 
 
   useEffect(()=>{
-    AuthService.getCurrentUser()
+    authService.getCurrentUser()
       .then((userData)=>{
         if(userData){
           dispatch(login({userData}))
@@ -21,14 +23,14 @@ function App() {
       .finally(()=>setLoading(false))
   },[])
 
-  return !loding?(
+  return !loding ?(
     <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
-    <div className="w-full flex">
-      <Headers/>
+    <div className="w-full block">
+      <Header />
       <main>
-     TODO   {/* <outlet/> */}
+     TODO   <outlet/>
       </main>
-      <Footer/>
+      <Footer />
     </div>
     </div>
   ):null
